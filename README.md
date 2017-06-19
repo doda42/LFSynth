@@ -6,6 +6,8 @@ This is a bare-bones light field renderer implemented in MATLAB.
 ![thumb](Thumbs/LFSynthThumb512.png)
 
 # Quick start
+Get the latest version of LFSynth at http://github.com/doda42/LFSynth
+
 Requires the Light Field Toolbox for MATLAB v0.4 available here: https://goo.gl/RHe4hR
 
 Run DemoLFSynth.m. It should generate a light field in a few seconds, and display it using the interactive LFDispMousePan function.
