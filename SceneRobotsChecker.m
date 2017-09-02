@@ -57,7 +57,7 @@ Shapes(N).Texture.Bitmap = trobo;
 Shapes(N).Texture.Scale = 0.44;
 Shapes(N).PlanePos = [-0.3, FloorDist - Shapes(N).Texture.Scale/2, 2.25];
 Shapes(N).PlaneN = [0, 0, 1]; % robots point towards camera
-Shapes(N).PlaneUp = [0, 1, 0];     % and are upright; the 
+Shapes(N).PlaneUp = [0, 1, 0];     % and are upright
 N = N + 1;
 
 Shapes(N).Texture.Bitmap = trobo(:,end:-1:1,:);
