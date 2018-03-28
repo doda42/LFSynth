@@ -105,8 +105,11 @@ for( TIdx = 1:length(TVec) )
 
 		% optionally scale the texture
 		if( isfield(CurShape.Texture, 'Scale') )
-			PTexU = PTexU ./ CurShape.Texture.Scale;
-			PTexR = PTexR ./ CurShape.Texture.Scale;
+			if( numel( CurShape.Texture.Scale ) ~= 2 )
+				CurShape.Texture.Scale = CurShape.Texture.Scale .* [1,1];
+			end
+			PTexU = PTexU ./ CurShape.Texture.Scale(2);
+			PTexR = PTexR ./ CurShape.Texture.Scale(1);
 		end
 		
 		% optionally tile the texture
@@ -160,14 +163,14 @@ for( TIdx = 1:length(TVec) )
 	
 	LF(TIdx,:,:,:,:) = LFSlice;
 	
-	LFFigure(1);
 	LFDisp(LF(TIdx,ceil(end/2),:,:,1:3));
 	axis image
 	title('...rendering...');
 	drawnow
 end
 
-LFFigure(1);
+LFDisp(LF(:,:,:,:,1:3));
+axis image
 title('Done');
 
 end
