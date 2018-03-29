@@ -17,6 +17,7 @@ LFInfo = LFDefaultField( 'LFInfo', 'STExtent', [0.25,0.25]);    % camera's "base
 LFInfo = LFDefaultField( 'LFInfo', 'D', 3);                     % distance to u,v plane
 LFInfo = LFDefaultField( 'LFInfo', 'UVExtent', LFInfo.D/3);     % camera's FOV (uv extent)
 SceneGeom = LFDefaultField( 'SceneGeom', 'CamRot', [0,0,0] );   % camera's rotation
+SceneGeom = LFDefaultField( 'SceneGeom', 'BGColor', [0,0,0] );   % scene background colour
 
 RenderOptions = LFDefaultField( 'RenderOptions', 'FindRayLen', false ); % find per-ray dist to camera
 RenderOptions = LFDefaultField( 'RenderOptions', 'Precision', 'single' );
@@ -45,6 +46,9 @@ for( TIdx = 1:length(TVec) )
 	
 	LFSlice = zeros([LFInfo.LFSize(2:end),NChans], RenderOptions.Precision);
 	LFSlice(:,:,:,5) = 1e9; % init depth to "far"
+	for( iChan = 1:3 )
+		LFSlice(:,:,:,iChan) = SceneGeom.BGColor(iChan);
+	end
 	
  	% build up the rays we want to sample
 	[ss,tt,uu,vv] = BuildRaysForCamera( LFInfo, TIdx, RenderOptions );
